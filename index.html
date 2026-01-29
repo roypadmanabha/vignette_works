@@ -3,8 +3,78 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Prevent Zooming in all devices -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Vignette | Home</title>
+
+    <style>
+        /* Disable text selection and touch callouts */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        /* Prevent pinch-zoom gesture at the CSS level */
+        html,
+        body {
+            touch-action: pan-x pan-y;
+            overflow-x: hidden;
+        }
+    </style>
+
+    <script>
+        // 1. Block Zooming via Keyboard (Ctrl/Cmd + +/-/0)
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0'].includes(e.key)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // 2. Block Zooming via Mouse Wheel (Ctrl/Cmd + Wheel)
+        window.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // 3. Block Pinch Zoom on Touch Screens
+        window.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // 4. Disable Context Menu (Right Click / Long Press)
+        window.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        // 5. Detection for common Screenshot/Screen-Recording shortcuts (Best Effort)
+        window.addEventListener('keydown', (e) => {
+            // Block PrintScreen
+            if (e.key === 'PrintScreen') {
+                navigator.clipboard.writeText(''); // Attempt to clear clipboard
+                alert('Screenshots/Recording are restricted on this page.');
+            }
+            // Block common shortcuts like Cmd+Shift+3/4/5 (Mac) or Windows+Shift+S (Windows)
+            // Note: Many OS-level shortcuts CANNOT be blocked by JS, but we try anyway.
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === '3' || e.key === '4' || e.key === '5' || e.key === 's')) {
+                // We can't actually stop the OS-level capture, but we can notify
+                console.warn('Screenshot shortcut detected');
+            }
+        });
+
+        // 6. Blur content when user leaves the window (to prevent capture/peek)
+        window.addEventListener('blur', () => {
+            document.body.style.filter = 'blur(10px) brightness(0.5)';
+        });
+        window.addEventListener('focus', () => {
+            document.body.style.filter = 'none';
+        });
+    </script>
+
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
