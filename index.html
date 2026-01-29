@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignette | Home</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/png" href="./assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo.png">
+
+
+    <!-- Google Fonts: EB Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"EB Garamond"', 'serif'],
+                    },
+                    colors: {
+                        light: {
+                            bg: '#FDFBF7', // Soft Cream
+                            text: '#1A1A1A', // Sharp Black
+                        },
+                        dark: {
+                            bg: '#0F0F13', // Deep Obsidian
+                            text: '#EAEAEA',
+                            accent: '#FFD700', // Gold
+                            neon: '#00FFFF', // Cyan Neon
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./src/style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body
+    class="font-serif bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-500 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-3 md:py-4 flex justify-between items-center backdrop-blur-md border-b border-white/20 dark:border-white/5"
+        style="background: linear-gradient(90deg, rgba(220,38,38,0.15) 0%, rgba(22,163,74,0.15) 50%, rgba(255,255,255,0.2) 100%);">
+        <a href="#" class="flex items-center gap-2 md:gap-3">
+            <img src="./assets/logo.png" alt="Vignette Logo" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover">
+            <span class="text-xl md:text-2xl font-bold tracking-tighter italic">Vignette</span>
+        </a>
+
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+            <!-- Icons injected by JS -->
+            <i data-lucide="moon" class="hidden dark:block"></i>
+            <i data-lucide="sun" class="block dark:hidden"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section (3D Container) -->
+    <section id="hero" class="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+        <div id="canvas-container" class="absolute inset-0 z-0"></div>
+
+        <div class="z-10 text-center px-4 mix-blend-difference text-white pointer-events-none">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 opacity-0 translate-y-10" id="hero-title">
+                Vignette</h1>
+            <p class="text-xl md:text-2xl italic font-light opacity-0 translate-y-10" id="hero-subtitle">Crafting Visual
+                Stories.</p>
+        </div>
+
+        <a href="#highlights"
+            class="absolute bottom-10 animate-bounce cursor-pointer z-10 text-black dark:text-white hover:scale-110 transition-transform">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </a>
+    </section>
+
+    <!-- Highlights Section (Video Grid) -->
+    <section id="highlights" class="py-20 px-4 md:px-8 lg:px-16 overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center">Highlights</h2>
+            <p class="text-lg md:text-xl opacity-70 mb-12 max-w-3xl mx-auto text-center text-justify">
+                Here are some highlights from videos I’ve created and shared, each gaining strong engagement across
+                categories like festivals, travel, minimalism, and promotions. Check them out—you’re sure to love them!
+            </p>
+
+            <!-- Video Grid -->
+            <div class="grid grid-cols-2 gap-6">
+
+                <!-- Item 1: Festivals -->
+                <div
+                    class="highlight-card relative aspect-square rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 group cursor-pointer">
+                    <video src="./assets/festival.mp4" autoplay loop muted playsinline
+                        class="w-full h-full object-cover"></video>
+                    <div
+                        class="absolute inset-0 bg-black/20 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-white text-2xl font-bold">Festivals</span>
+                    </div>
+                </div>
+
+                <!-- Item 2: Travel -->
+                <div
+                    class="highlight-card relative aspect-square rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 group cursor-pointer">
+                    <video src="./assets/travel.mp4" autoplay loop muted playsinline
+                        class="w-full h-full object-cover"></video>
+                    <div
+                        class="absolute inset-0 bg-black/20 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-white text-2xl font-bold">Travel</span>
+                    </div>
+                </div>
+
+                <!-- Item 3: Promotions -->
+                <div
+                    class="highlight-card relative aspect-square rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 group cursor-pointer">
+                    <video src="./assets/promo.mp4" autoplay loop muted playsinline
+                        class="w-full h-full object-cover"></video>
+                    <div
+                        class="absolute inset-0 bg-black/20 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-white text-2xl font-bold">Promotions</span>
+                    </div>
+                </div>
+
+                <!-- Item 4: Minimalism -->
+                <div
+                    class="highlight-card relative aspect-square rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800 group cursor-pointer">
+                    <video src="./assets/mini.mp4" autoplay loop muted playsinline
+                        class="w-full h-full object-cover"></video>
+                    <div
+                        class="absolute inset-0 bg-black/20 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-white text-2xl font-bold">Minimalism</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 md:px-8 lg:px-16 bg-gray-50 dark:bg-white/5 backdrop-blur-sm">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center">Services</h2>
+        <p class="text-xl opacity-80 leading-relaxed mb-12 max-w-4xl mx-auto text-center text-justify">
+            Our services include video editing, seamless podcast enhancement, engaging promotional content, and tailored
+            shoots—crafted to elevate brand visibility, storytelling, and impact across marketing and social platforms.
+        </p>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
+
+            <!-- Service 1: Video Editing -->
+            <div
+                class="service-card group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="./assets/service-editing.png" alt="Video Editing"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors duration-300">
+                </div>
+                <div class="absolute inset-0 flex items-end justify-center pb-4 md:pb-6">
+                    <h3
+                        class="text-white text-sm md:text-lg lg:text-xl font-bold text-center px-2 drop-shadow-lg leading-tight">
+                        Video Editing</h3>
+                </div>
+            </div>
+
+            <!-- Service 2: Podcast Enhancement -->
+            <div
+                class="service-card group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="./assets/service-podcast.jpg" alt="Podcast Enhancement"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors duration-300">
+                </div>
+                <div class="absolute inset-0 flex items-end justify-center pb-4 md:pb-6">
+                    <h3
+                        class="text-white text-sm md:text-lg lg:text-xl font-bold text-center px-2 drop-shadow-lg leading-tight">
+                        Podcast Enhancement</h3>
+                </div>
+            </div>
+
+            <!-- Service 3: Promotional Content -->
+            <div
+                class="service-card group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="./assets/service-promo.png" alt="Promotional Content"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors duration-300">
+                </div>
+                <div class="absolute inset-0 flex items-end justify-center pb-4 md:pb-6">
+                    <h3
+                        class="text-white text-sm md:text-lg lg:text-xl font-bold text-center px-2 drop-shadow-lg leading-tight">
+                        Promotional Content</h3>
+                </div>
+            </div>
+
+            <!-- Service 4: Promo Shoot -->
+            <div
+                class="service-card group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <img src="./assets/service-shoot.jpg" alt="Promo Shoot"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-colors duration-300">
+                </div>
+                <div class="absolute inset-0 flex items-end justify-center pb-4 md:pb-6">
+                    <h3
+                        class="text-white text-sm md:text-lg lg:text-xl font-bold text-center px-2 drop-shadow-lg leading-tight">
+                        Promo Shoot</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="py-20 px-4 md:px-8 lg:px-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center">Plans</h2>
+        <p class="text-lg opacity-70 text-center mb-12 max-w-2xl mx-auto text-justify">
+            We offer exciting pricing plans for personal and commercial shoots, edits, and combos—high-quality,
+            creative, and viral-ready. Book your dedicated editor now for standout content at a reasonable rate!
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Basic Plan -->
+            <div
+                class="plan-card p-10 rounded-3xl border border-gray-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-lg hover:shadow-2xl hover:shadow-yellow-500/20 dark:hover:shadow-cyan-500/20 transition-all duration-500 transform hover:-translate-y-2 flex flex-col h-full">
+                <h3 class="text-3xl font-bold mb-4">Basic</h3>
+                <p class="text-lg opacity-80 mb-8 flex-grow">Ideal for your reels — timely videos to boost your reach!
+                </p>
+                <div class="mb-8 p-4 bg-black/5 dark:bg-white/5 rounded-xl">
+                    <p class="text-sm opacity-70 italic">"Basic for personal, pay-as-you-go use"</p>
+                </div>
+                <ul class="space-y-4 mb-10 opacity-70">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Quick Turnaround
+                    </li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Color Correction
+                    </li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Standard Edits</li>
+                </ul>
+                <a href="#"
+                    class="block w-full py-4 text-center rounded-full border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors mt-auto">Choose
+                    Basic</a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div
+                class="plan-card p-10 rounded-3xl border border-gray-200 dark:border-white/10 bg-black text-white dark:bg-white dark:text-black hover:shadow-2xl hover:shadow-yellow-500/30 transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden flex flex-col h-full">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    POPULAR</div>
+                <h3 class="text-3xl font-bold mb-4">Premium</h3>
+                <p class="text-lg opacity-80 mb-8 flex-grow">For brands/professionals, a monthly deal with 10 to 20%
+                    OFF!</p>
+                <div class="mb-8 p-4 bg-white/10 dark:bg-black/5 rounded-xl">
+                    <p class="text-sm opacity-70 italic">"Premium for commercial bulk projects with increasing
+                        discounts"</p>
+                </div>
+                <ul class="space-y-4 mb-10 opacity-70">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Priority Support
+                    </li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Advanced VFX</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5"></i> Dedicated Editor
+                    </li>
+                </ul>
+                <a href="#"
+                    class="block w-full py-4 text-center rounded-full bg-white text-black dark:bg-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors mt-auto">Choose
+                    Premium</a>
+            </div>
+        </div>
+
+        <p class="text-center mt-12 opacity-60 max-w-2xl mx-auto text-sm">
+            We offer two plans: Basic for personal, pay-as-you-go use, and Premium for commercial bulk projects with
+            increasing discounts and exclusive offers as your project volume grows.
+        </p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-8 lg:px-16 bg-gray-100 dark:bg-black text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center">About Vignette</h2>
+            <p class="text-xl md:text-2xl leading-relaxed opacity-80 mb-12 font-light text-justify">
+                We have been passionately pursuing our journey in capturing, editing, and showcasing visual content for
+                many years.
+                From viral reels to professional brand storytelling, we create exceptional visual experiences.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="https://roypadmanabha.github.io/vignette/ourworks.html"
+                    class="flex items-center gap-2 text-lg hover:underline"><i data-lucide="globe"></i> Our Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-200 dark:border-white/10 text-center">
+        <h3
+            class="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-bold opacity-5 mb-12 select-none pointer-events-none">
+            VIGNETTE</h3>
+
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 mb-12">
+            <a href="https://wa.me/8258814126?text=Hi%2C%20I%E2%80%99m%20reaching%20out..."
+                class="flex items-center gap-3 text-xl hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                <i data-lucide="message-circle" class="w-6 h-6"></i> Chat on WhatsApp
+            </a>
+            <a href="mailto:Vignette@gmail.com"
+                class="flex items-center gap-3 text-xl hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors">
+                <i data-lucide="mail" class="w-6 h-6"></i> Vignette@gmail.com
+            </a>
+        </div>
+
+        <p class="opacity-50 text-sm">© 2026 Vignette. Akhaura Road, Ramnagar, Agartala, Tripura(W), 799002.</p>
+        <div class="mt-4 flex justify-center gap-4 text-sm opacity-50">
+            <a href="#" class="hover:opacity-100">Terms</a>
+            <a href="#" class="hover:opacity-100">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Main Logic -->
+    <script defer src="./src/main.js"></script>
+</body>
+
+</html>
